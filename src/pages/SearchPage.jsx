@@ -7,7 +7,7 @@ import Loading from '../components/Loading';
 import api from '../api';
 
 const SearchPage = () => {
-  const { keyword } = useParams(); // Get the keyword directly from the URL
+  const { keyword } = useParams();
   const navigate = useNavigate();
 
   const [events, setEvents] = useState([]);
@@ -27,6 +27,7 @@ const SearchPage = () => {
       const response = await api.get(`/discovery/v2/events.json`, { params: { keyword } });
       const eventsData = response.data?._embedded?.events || [];
       setEvents(eventsData);
+      console.log(response)
     } catch (err) {
       setError('Failed to load events. Please try again.');
     } finally {
@@ -63,21 +64,26 @@ const SearchPage = () => {
 
       {/* Events List */}
       {!loading && !error && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-          {events.map((event) => (
-            <div
-              key={event.id}
-              className="cursor-pointer"
-              onClick={() => handleEventClick(event.id)}
-            >
-              <SearchItem data={event} />
-            </div>
-          ))}
-          {events.length === 0 && (
-            <div className="text-center text-gray-600">
-              No events found for "{keyword}".
-            </div>
-          )}
+        <div className="p-4">
+          <h2 className="text-xl font-bold text-gray-800 mb-6 text-center">
+            Search Results for "{keyword}"
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {events.map((event) => (
+              <div
+                key={event.id}
+                className="bg-white border rounded-lg shadow-md hover:shadow-lg transition overflow-hidden cursor-pointer"
+                onClick={() => handleEventClick(event.id)}
+              >
+                <SearchItem data={event} />
+              </div>
+            ))}
+            {events.length === 0 && (
+              <div className="col-span-full text-center text-gray-600">
+                No events found for "{keyword}".
+              </div>
+            )}
+          </div>
         </div>
       )}
 

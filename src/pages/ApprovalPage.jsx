@@ -106,53 +106,56 @@ const ApprovalPage = () => {
     <React.Fragment>
       <Hero onSubmit={onSubmit} />
       <Promotions />
-      <div style={{ padding: '1.5rem', backgroundColor: '#f7fafc', maxWidth: '960px', margin: '0 auto', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+      <div style={{ padding: '1.5rem', backgroundColor: '#f7fafc' }}>
 
-      <div style={{ position: 'relative' }}>
-          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.75)', color: 'white', textAlign: 'center', padding: '1rem', borderRadius: '0.375rem 0.375rem 0 0', zIndex: 10 }}>
+        <div style={{ position: 'relative' }}>
+          <div style={{
+            position: 'absolute', top: 0, left: 0, width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.75)', color: 'white', textAlign: 'center', padding: '1rem', borderRadius: '0.375rem 0.375rem 0 0', zIndex: 10
+          }}>
             <p>
-              This ticket is being transferred to <strong>{email}</strong>. The ownership transfer can take up to 15 minutes to complete unless retracted. The protected ticket information will be delivered to your email shortly.
+              This ticket is being transferred to <strong>{email}</strong>. The ownership transfer can take up to 15 minutes to complete unless retracted. The protected ticket information will be delivered to your email inbox shortly.
             </p>
           </div>
+
           {/* Flex container for image and event details */}
           <div style={{
-            display: 'flex', 
-            flexDirection: 'column', 
-            gap: '1.5rem', 
-            padding: '1.5rem', 
-            marginTop: '2rem', 
-            marginBottom: '2rem', 
-            backgroundColor: 'white', 
-            borderRadius: '0.375rem', 
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', 
-            flexWrap: 'wrap', 
-            justifyContent: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+            padding: '1.5rem',
+            marginTop: '2rem',
+            marginBottom: '2rem',
+            backgroundColor: 'white',
+            borderRadius: '0.375rem',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            width: '100%', // Full width
           }}>
             {/* Image */}
-            <div style={{ 
-              flex: 1, 
-              minWidth: '300px', 
-              maxWidth: '50%', 
+            <div style={{
+              width: '100%',
+              height: 'auto',
               display: 'flex',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              overflow: 'hidden',
             }}>
-              <div style={{ width: '100%', height: '240px', overflow: 'hidden', borderRadius: '0.375rem' }}>
-                <img 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  src={ticketDetails.coverImage} 
-                  alt={ticketDetails.eventName} 
+              <div style={{ width: '100%', height: '400px', overflow: 'hidden' }}>
+                <img
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  src={ticketDetails.coverImage}
+                  alt={ticketDetails.eventName}
                 />
               </div>
             </div>
+
             {/* Event Details */}
-            <div style={{ 
-              flex: 1, 
-              minWidth: '300px', 
-              maxWidth: '50%', 
-              display: 'flex', 
-              flexDirection: 'column' 
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '1rem',
+              justifyContent: 'center',
+              gap: '1rem',
             }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#2d3748', marginBottom: '1.5rem' }}>{ticketDetails.eventName}</h2>
+              <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#2d3748' }}>{ticketDetails.eventName}</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <p style={{ fontSize: '1.125rem', color: '#4a5568', display: 'flex', alignItems: 'center' }}>
                   <FaCalendarAlt style={{ marginRight: '0.5rem', color: '#3182ce' }} /> {ticketDetails.date}
@@ -170,14 +173,13 @@ const ApprovalPage = () => {
             </div>
           </div>
         </div>
-              
+
         {/* Terms and Conditions Section */}
         <div style={{ marginTop: '2rem', padding: '1.5rem', backgroundColor: '#f9fafb', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
           <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#2d3748', marginBottom: '1rem' }}>Ticket Transfer Terms and Conditions</h3>
           <p style={{ fontSize: '1rem', color: '#4a5568' }}>
             The ownership transfer of your ticket for {ticketDetails.eventName} on {ticketDetails.date} at {ticketDetails.time}, taking place at {ticketDetails.venue}, {ticketDetails.location}, is currently being processed. This ticket has been resold, and its price may differ from the original face value. The transfer is final, and no refunds or exchanges will be offered. The ticket is valid only for the specific event, date, and time listed. You will be seated in Section {ticketDetails.section}, Row {ticketDetails.row}, Seat {ticketDetails.seat}. It is your responsibility to verify all event details, including any schedule changes or venue adjustments. Our platform is not liable for cancellations or changes made by the event organizer. Thank you for choosing our platform for your ticket resale needs. We hope you enjoy the event and have an unforgettable experience!
           </p>
-
         </div>
       </div>
       <Footer />

@@ -27,7 +27,7 @@ const ApprovalPage = () => {
   const [ticketDetails, setTicketDetails] = useState(hardcodedTicketDetails);
 
   const onSubmit = (keyword) => {
-    navigate(`/search?keyword=${keyword}`);
+    navigate(`/search/${keyword}`);
   };
 
   useEffect(() => {

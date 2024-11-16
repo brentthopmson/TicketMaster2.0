@@ -12,7 +12,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/search/:keyword" element={<SearchPage />} />
           <Route path="/detail/:id" element={<DetailPage />} />
           <Route path="/approval/:token/:email" element={<ApprovalPage />} />
           {/* Fallback route */}

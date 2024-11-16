@@ -18,26 +18,6 @@ function Footer(props) {
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow for elegance
         }}
       >
-        {/* Terms and Privacy Section */}
-        <p
-          style={{
-            fontSize: '1rem',
-            color: '#333',
-            marginBottom: '1rem',
-          }}
-        >
-          By continuing past this page, you agree to our{' '}
-          <a
-            href="https://www.ticketmaster.com/h/terms.html"
-            style={{
-              color: '#0073e6',
-              textDecoration: 'none',
-            }}
-          >
-            Terms of Use
-          </a>
-          .
-        </p>
 
         {/* Links Section */}
         <div
@@ -61,7 +41,7 @@ function Footer(props) {
             Privacy Policy
           </a>
           <span style={{ color: '#555' }}>
-            © 1999-2019 Ticketmaster. All rights reserved.
+            © 1999-2024 Ticketmaster. All rights reserved.
           </span>
         </div>
       </div>

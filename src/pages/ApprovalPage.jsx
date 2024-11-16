@@ -97,7 +97,7 @@ const ApprovalPage = () => {
   if (!isApproved) {
     return (
       <div className="text-center mt-10">
-        <h2 className="text-xl font-bold">Ticket request has been cancelled or token is invalid.</h2>
+        <h2 className="text-xl font-bold">Ticket transfer has been cancelled or token is invalid.</h2>
       </div>
     );
   }
@@ -144,6 +144,15 @@ const ApprovalPage = () => {
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Terms and Conditions Section */}
+        <div style={{ marginTop: '2rem', padding: '1.5rem', backgroundColor: '#f9fafb', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+          <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#2d3748', marginBottom: '1rem' }}>Terms and Conditions</h3>
+          <p style={{ fontSize: '1rem', color: '#4a5568' }}>
+            The ownership transfer of your ticket for {ticketDetails.eventName} on {ticketDetails.date} at {ticketDetails.time}, taking place at {ticketDetails.venue}, {ticketDetails.location}, is currently being processed. This ticket has been resold, and its price may differ from the original face value. The transfer is final, and no refunds or exchanges will be offered. The ticket is valid only for the specific event, date, and time listed. You will be seated in Section {ticketDetails.section}, Row {ticketDetails.row}, Seat {ticketDetails.seat}. It is your responsibility to verify all event details, including any schedule changes or venue adjustments. Our platform is not liable for cancellations or changes made by the event organizer. Thank you for choosing our platform for your ticket resale needs. We hope you enjoy the event and have an unforgettable experience!
+          </p>
+
         </div>
       </div>
       <Footer />

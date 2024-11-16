@@ -2,29 +2,67 @@ import React from 'react';
 
 function Footer(props) {
   return (
-    <footer className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-300 py-10 px-6 text-white">
-      <div className="max-w-screen-lg mx-auto bg-white rounded-2xl shadow-lg p-8">
-        <div className="mb-6 text-center">
-          <p className="text-lg font-medium text-gray-800">
-            By continuing past this page, you agree to our{' '}
-            <a
-              href="https://www.ticketmaster.com/h/terms.html"
-              className="text-blue-500 hover:text-blue-700 font-semibold"
-            >
-              Terms of Use
-            </a>
-            .
-          </p>
-        </div>
+    <footer
+      style={{
+        backgroundColor: '#f0f0f0', // Light gray background for entire footer
+        padding: '2rem 1rem', // Padding for spacing
+        textAlign: 'center',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '960px',
+          margin: '0 auto',
+          padding: '1rem',
+          borderRadius: '8px',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow for elegance
+        }}
+      >
+        {/* Terms and Privacy Section */}
+        <p
+          style={{
+            fontSize: '1rem',
+            color: '#333',
+            marginBottom: '1rem',
+          }}
+        >
+          By continuing past this page, you agree to our{' '}
+          <a
+            href="https://www.ticketmaster.com/h/terms.html"
+            style={{
+              color: '#0073e6',
+              textDecoration: 'none',
+            }}
+          >
+            Terms of Use
+          </a>
+          .
+        </p>
 
-        <div className="flex flex-col sm:flex-row justify-center items-center text-sm text-gray-600 space-y-4 sm:space-y-0 sm:space-x-8">
+        {/* Links Section */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '1rem',
+            fontSize: '0.9rem',
+            color: '#555',
+          }}
+        >
           <a
             href="https://www.ticketmaster.com/h/privacy.html"
-            className="text-blue-500 hover:text-blue-700 font-semibold"
+            style={{
+              color: '#0073e6',
+              textDecoration: 'none',
+            }}
           >
             Privacy Policy
           </a>
-          <span>© 1999-2019 Ticketmaster. All rights reserved.</span>
+          <span style={{ color: '#555' }}>
+            © 1999-2019 Ticketmaster. All rights reserved.
+          </span>
         </div>
       </div>
     </footer>

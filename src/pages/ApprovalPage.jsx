@@ -106,36 +106,42 @@ const ApprovalPage = () => {
     <React.Fragment>
       <Hero onSubmit={onSubmit} />
       <Promotions />
-      <div className="p-6 bg-white max-w-3xl mx-auto">
-        <div className="relative shadow-xl rounded-lg overflow-hidden">
-          <div className="absolute top-0 left-0 w-full bg-black bg-opacity-75 text-white text-center p-4 z-10">
+      <div style={{ padding: '1.5rem', backgroundColor: '#f7fafc', maxWidth: '960px', margin: '0 auto', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+        <div style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.75)', color: 'white', textAlign: 'center', padding: '1rem', borderRadius: '0.375rem 0.375rem 0 0', zIndex: 10 }}>
             <p>
-              This ticket is being transferred to <strong>{email}</strong>. The ownership transfer can take up to 10 minutes to complete unless retracted by the initial owner.
+              This ticket is being transferred to <strong>{email}</strong>. The ownership transfer can take up to 15 minutes to complete unless retracted.
             </p>
           </div>
-          {/* Reduced Image Size */}
-          <div className="w-full h-48 md:h-64 overflow-hidden">
-            <img 
-              className="w-full h-full object-cover" 
-              src={ticketDetails.coverImage} 
-              alt={ticketDetails.eventName} 
-            />
-          </div>
-          <div className="p-6">
-            {/* Event Information Section with Icons */}
-            <div className="mb-4">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">{ticketDetails.eventName}</h2>
-              <div className="flex items-center text-lg text-gray-600 mb-2">
-                <FaCalendarAlt className="mr-2" /> {ticketDetails.date} 
-                <FaClock className="ml-4 mr-2" /> {ticketDetails.time}
-              </div>
-              <div className="flex items-center text-lg text-gray-600 mb-4">
-                <FaMapMarkerAlt className="mr-2" /> {ticketDetails.venue}, {ticketDetails.location}
+          {/* Flex container for image and event details */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', padding: '1.5rem', marginTop: '2rem', marginBottom: '2rem', backgroundColor: 'white', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', flexWrap: 'wrap' }}>
+            {/* Image */}
+            <div style={{ flex: 1, minWidth: '300px', maxWidth: '50%' }}>
+              <div style={{ width: '100%', height: '240px', overflow: 'hidden', borderRadius: '0.375rem' }}>
+                <img 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  src={ticketDetails.coverImage} 
+                  alt={ticketDetails.eventName} 
+                />
               </div>
             </div>
-            {/* Seating Information with Icon */}
-            <div className="flex items-center text-lg text-gray-800">
-              <FaChair className="mr-2" /> Section {ticketDetails.section}, Row {ticketDetails.row}, Seat {ticketDetails.seat}
+            {/* Event Details */}
+            <div style={{ flex: 1, minWidth: '300px', maxWidth: '50%' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#2d3748', marginBottom: '1.5rem' }}>{ticketDetails.eventName}</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <p style={{ fontSize: '1.125rem', color: '#4a5568', display: 'flex', alignItems: 'center' }}>
+                  <FaCalendarAlt style={{ marginRight: '0.5rem', color: '#3182ce' }} /> {ticketDetails.date}
+                </p>
+                <p style={{ fontSize: '1.125rem', color: '#4a5568', display: 'flex', alignItems: 'center' }}>
+                  <FaClock style={{ marginRight: '0.5rem', color: '#3182ce' }} /> {ticketDetails.time}
+                </p>
+                <p style={{ fontSize: '1.125rem', color: '#4a5568', display: 'flex', alignItems: 'center' }}>
+                  <FaMapMarkerAlt style={{ marginRight: '0.5rem', color: '#3182ce' }} /> {ticketDetails.venue}, {ticketDetails.location}
+                </p>
+                <p style={{ fontSize: '1.125rem', color: '#2d3748', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
+                  <FaChair style={{ marginRight: '0.5rem', color: '#3182ce' }} /> Section {ticketDetails.section}, Row {ticketDetails.row}, Seat {ticketDetails.seat}
+                </p>
+              </div>
             </div>
           </div>
         </div>

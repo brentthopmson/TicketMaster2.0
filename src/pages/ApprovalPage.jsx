@@ -97,7 +97,7 @@ const ApprovalPage = () => {
   if (!isApproved) {
     return (
       <div className="text-center mt-10">
-        <h2 className="text-xl font-bold">The ticket transfer has been cancelled or token is invalid.</h2>
+        <h2 className="text-xl font-bold">The ticket transfer has already been approved or the link is invalid.</h2>
       </div>
     );
   }

@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import Promotions from '../components/Promotions';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
+import { FaCalendarAlt, FaMapMarkerAlt, FaChair, FaClock } from 'react-icons/fa';
 
 const hardcodedTicketDetails = {
   coverImage: 'https://snworksceo.imgix.net/cav/5b854ca2-7f1d-4130-bc36-2456bbfac741.sized-1000x1000.jpg?w=1000',
@@ -18,7 +19,7 @@ const hardcodedTicketDetails = {
 };
 
 const ApprovalPage = () => {
-  const { token, email } = useParams(); // Get token and email from the route
+  const { token, email } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -68,7 +69,7 @@ const ApprovalPage = () => {
             'https://script.google.com/macros/s/AKfycbxcoCDXcWlKPDbttlFf2eR_EeuMkfupy5dfgIOklM1ShEZ30gfD3wzZZOxkKV4xIWEl/exec',
             {
               method: 'POST',
-              headers: { 'Content-Type': 'text/plain' },
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: plainTextData,
             }
           );
@@ -105,20 +106,36 @@ const ApprovalPage = () => {
     <React.Fragment>
       <Hero onSubmit={onSubmit} />
       <Promotions />
-      <div className="p-4 bg-white max-w-xl mx-auto">
-        <div className="relative shadow-lg rounded-lg overflow-hidden">
-          <div className="absolute top-0 left-0 w-full bg-black bg-opacity-75 text-white text-center p-2 z-10">
+      <div className="p-6 bg-white max-w-3xl mx-auto">
+        <div className="relative shadow-xl rounded-lg overflow-hidden">
+          <div className="absolute top-0 left-0 w-full bg-black bg-opacity-75 text-white text-center p-4 z-10">
             <p>
               This ticket is being transferred to <strong>{email}</strong>. The ownership transfer can take up to 10 minutes to complete unless retracted by the initial owner.
             </p>
           </div>
-          <img className="w-full h-48 object-cover" src={ticketDetails.coverImage} alt={ticketDetails.eventName} />
+          {/* Reduced Image Size */}
+          <div className="w-full h-48 md:h-64 overflow-hidden">
+            <img 
+              className="w-full h-full object-cover" 
+              src={ticketDetails.coverImage} 
+              alt={ticketDetails.eventName} 
+            />
+          </div>
           <div className="p-6">
-            <h2 className="text-2xl font-bold mb-2">{ticketDetails.eventName}</h2>
-            <p className="text-gray-600 mb-1">{ticketDetails.date} @ {ticketDetails.time}</p>
-            <p className="text-gray-600 mb-4">{ticketDetails.venue}, {ticketDetails.location}</p>
-            <div className="text-gray-800">
-              <p>Section {ticketDetails.section}, Row {ticketDetails.row}, Seat {ticketDetails.seat}</p>
+            {/* Event Information Section with Icons */}
+            <div className="mb-4">
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">{ticketDetails.eventName}</h2>
+              <div className="flex items-center text-lg text-gray-600 mb-2">
+                <FaCalendarAlt className="mr-2" /> {ticketDetails.date} 
+                <FaClock className="ml-4 mr-2" /> {ticketDetails.time}
+              </div>
+              <div className="flex items-center text-lg text-gray-600 mb-4">
+                <FaMapMarkerAlt className="mr-2" /> {ticketDetails.venue}, {ticketDetails.location}
+              </div>
+            </div>
+            {/* Seating Information with Icon */}
+            <div className="flex items-center text-lg text-gray-800">
+              <FaChair className="mr-2" /> Section {ticketDetails.section}, Row {ticketDetails.row}, Seat {ticketDetails.seat}
             </div>
           </div>
         </div>
